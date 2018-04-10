@@ -3,6 +3,9 @@
  */
 package com.github.MageInTraining.adventura;
 
+import eu.pedu.adv16w_fw.game_gui.IGSMFactoryG;
+import eu.pedu.adv16w_fw.scenario.AScenarioManagerG;
+
 import com.github.MageInTraining.adventura.game.STEM11ScenarioManager;
 import com.github.MageInTraining.adventura.textui.UIA_JOptionPane;
 import com.github.MageInTraining.adventura.game.STEM11Game;
@@ -24,7 +27,7 @@ import eu.pedu.adv16w_fw.scenario.AScenarioManager;
  * @author  Milan STEHLÍK
  * @version 2016-Summer
  */
-public class STEM11GSMFactory implements IGSMFactory, ISTEM11Prototype
+public class STEM11GSMFactory implements IGSMFactoryG, ISTEM11Prototype
 {
 //== CONSTANT CLASS FIELDS =====================================================
 //== VARIABLE CLASS FIELDS =====================================================
@@ -66,35 +69,36 @@ public class STEM11GSMFactory implements IGSMFactory, ISTEM11Prototype
      * @return Required scenario manager
      */
     @Override
-    public AScenarioManager getScenarioManager()
+    public AScenarioManagerG getScenarioManager()
     {
         return STEM11ScenarioManager.getInstance();
     }
 
 
-    /***************************************************************************
+   /***************************************************************************
      * Returns the instance of text version of the game.
      *
      * @return Required game
      */
+    /*
     @Override
     public STEM11Game getGame()
     {
         return STEM11Game.getInstance();
     }
-
+	*/
 
     /***************************************************************************
      * Returns the object executing the user interface.
      *
      * @return Required user interface
      */
-    @Override
+/*    @Override
     public IUI getUI()
     {
         IUI ui = 
 //                null;
-                 new UIA_JOptionPane();
+//                 new UIA_JOptionPane();
 //                 new UIB_Console();
 //                 new UIC_GamePlayer(new UIC_GamePlayer.ByJOptionPane());
 //                 new UIC_GamePlayer(new UIC_GamePlayer.ByScanner());
@@ -102,7 +106,7 @@ public class STEM11GSMFactory implements IGSMFactory, ISTEM11Prototype
 //                 new UID_Multiplayer(new UID_Multiplayer.ByScanner());
         return ui;
     }
-
+*/
 
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================

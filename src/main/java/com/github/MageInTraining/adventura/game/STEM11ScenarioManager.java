@@ -3,6 +3,11 @@
  */
 package com.github.MageInTraining.adventura.game;
 
+import com.github.MageInTraining.adventura.STEM11GSMFactory;
+
+import eu.pedu.adv16w_fw.game_gui.IGSMFactoryG;
+import eu.pedu.adv16w_fw.scenario.AScenarioManagerG;
+
 import com.github.MageInTraining.adventura.ISTEM11Prototype;
 import eu.pedu.adv16w_fw.scenario.AScenarioManager;
 import eu.pedu.adv16w_fw.scenario.ScenarioStep;
@@ -44,10 +49,16 @@ import static eu.pedu.adv16w_fw.scenario.TypeOfStep.*;
  * @author  Milan STehlík
  * @version 2017-Winter
  */
-public class STEM11ScenarioManager extends AScenarioManager
-                               implements ISTEM11Prototype
+public class STEM11ScenarioManager extends AScenarioManagerG
+                               implements IAuthorMe //ISTEM11Prototype
 {
 //== CONSTANT CLASS FIELDS =====================================================
+	
+    /** Tovární třída, jejíž instancemi jsou tovární objekty poskytující
+     *  instanci správce scénářů i hry, jejíž scénáře daný správce spravuje. */
+    private final static 
+            Class<? extends IGSMFactoryG> FACTORY_CLASS =
+                                         STEM11GSMFactory.class;
  
     /** Name of the scenario with steps for testing mandatory actions. */
     private static final String REQUIRED_STEPS_SCENARIO_NAME = "REQUIRED";
@@ -883,6 +894,27 @@ String[]   bag;        //Current bag content
 //        MANAGER.playGameByScenario("???");
 
         System.exit(0);
+    }
+    
+    @Override
+    public String getAuthorName() {
+        return AUTHOR_NAME;
+      //  throw new UnsupportedOperationException("Not supported yet.");
+      //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getAuthorID() {
+        return AUTHOR_ID;
+       // throw new UnsupportedOperationException("Not supported yet.");
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Class<? extends IGSMFactoryG> getFactoryClass() {
+        return STEM11GSMFactory.class;
+       // throw new UnsupportedOperationException("Not supported yet.");
+        //To change body of generated methods, choose Tools | Templates.
     }
 
 }
