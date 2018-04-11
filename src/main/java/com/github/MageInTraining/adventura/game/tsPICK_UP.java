@@ -21,7 +21,7 @@ import java.util.Optional;
  * @author  Rudolf PECINOVSKÝ
  * @version 2015-Podzim
  */
-class tsPICK_UP extends AAction
+class tsPICK_UP extends STEM11AAction
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 //== VARIABLE CLASS ATTRIBUTES =================================================
@@ -61,42 +61,42 @@ class tsPICK_UP extends AAction
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 
     /***************************************************************************
-     * Metoda realizující reakci hry na zadání daného příkazu.
-     * Počet parametrů je závislý na konkrétním příkazu,
-     * např. příkazy <i>konec</i> a <i>nápověda</i> nemají parametry,
-     * příkazy <i>jdi</i> a <i>seber</i> mají jeden parametr
-     * příkaz <i>použij</i> muže mít dva parametry atd.
+     * Removes the item given in an argumenant from the current space (room)
+     * and puts it into the bag.
+     * But it requires so that the item with the given name<br>
+     * a) would be located in the current space,<br>
+     * b) could be picked up and<br>
+     * c) would fit into the bag.<br>
+     * Otherwise nothing will be done and the command is reported as wrong.
      *
-     * @param arguments Parametry příkazu;
-     *                  jejich počet muže byt pro každý příkaz jiný
-     * @return Text zprávy vypsané po provedeni příkazu
+     * @param arguments Parameters of the command
+     * @return The message text written after accomplishing the command
      */
     @Override
     public String execute(String... arguments)
     {
         if (arguments.length < 2) {
-            return "Nelze vzit";
+            return STEM11Texts.mNO_TAKE_ITEM;
         }
         String itemName      = arguments[1];
-        Area   currentArea   = World.getInstance().getCurrentSpace();
-        Optional<Item> oItem = INamed.getO(itemName, currentArea.getItems());
+        Area   currentRoom   =
+                                    STEM11World.getInstance().getCurrentSpace();
+        Optional<STEM11Item> oItem = INamed.getO(itemName, currentRoom.getItems());
         if (! oItem.isPresent()) {
-            return "Zadany predmet neni v mistnosti";
+            return STEM11Texts.mNOT_HERE + itemName;
         }
-        Item item = oItem.get();
-        if (item.getWeight() == 10){
-             return "Nelze vzit " + itemName;
-        } 
-        Bag bag = Bag.getInstance();
+        STEM11Item item = oItem.get();
+        STEM11Bag bag = STEM11Bag.getInstance();
         boolean added = bag.tryAddItem(item);
         if (added) {
-            currentArea.removeItem(item);
-            return "Sebral jsi " + itemName;
+            currentRoom.removeItem(item);
+            return STEM11Texts.mTAKEN + itemName;
         }
         else {
-            return "Batoh plny";
+            return STEM11Texts.mBAG_FULL;
         }
     }
+
 
 
 

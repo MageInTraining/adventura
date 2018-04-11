@@ -22,7 +22,7 @@ import java.util.Optional;
  * @author  Rudolf PECINOVSKÝ
  * @version 2015-Podzim
  */
-class tsGIVE extends AAction
+class tsGIVE extends STEM11AAction
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 //== VARIABLE CLASS ATTRIBUTES =================================================
@@ -76,43 +76,50 @@ class tsGIVE extends AAction
     public String execute(String... arguments)
     {
      if (arguments.length < 3) {    
-        return "Vec nejde dat"; 
+        return STEM11Texts.mNOT_GIVE; 
     }
-    String      itemDava = arguments[1];
-    String      itemKomu = arguments[2];
+     String      itemCommodity = arguments[1];
+     String      itemReciver = arguments[2];
     
-    Bag              bag = Bag.getInstance();
-    Optional<Item> oItem = INamed.getO(itemDava, bag.getItems());
+    STEM11Bag              bag = STEM11Bag.getInstance();
+    Optional<STEM11Item> oItem = INamed.getO(itemCommodity, bag.getItems());
         if (! oItem.isPresent()) {
-            return "Neni v batohu " + itemDava;
+            return STEM11Texts.mNOT_HAVE + itemCommodity;
         }
-    Area   currentArea   = World.getInstance().getCurrentSpace();
-    Optional<Item> oItem2 = INamed.getO(itemKomu, currentArea.getItems());
+    Area   currentArea   = STEM11World.getInstance().getCurrentSpace();
+    Optional<STEM11Item> oItem2 = INamed.getO(itemReciver, currentArea.getItems());
         if (! oItem.isPresent()) {
-            return "Nelze dat vec " + itemKomu;    
+            return "Nelze dat vec " + itemReciver;    
     }
-    if ( itemDava.equalsIgnoreCase("hracka") ) {
-        if (itemKomu.equalsIgnoreCase("chlapec")){
-        Item item = oItem.get();  
-        bag.removeItem(item);
-        Optional<Area> oChange = INamed.getO("Recepce",
-                                 World.getInstance().getAllSpaces());     
-        Area changedArea = oChange.get();
-        String rec ="Recepcni";
-         Optional<Item> oRecep = INamed.getO(rec, changedArea.getItems());
-        Item recep = oRecep.get();
-        changedArea.removeItem(recep);
-        
-        Item key1 = new Item("Klic_od_pracovny");
-        Item key2 = new Item("Klic_od_garaze");
-        changedArea.addItem(key1);
-        changedArea.addItem(key2);
-        
-        return "Promluvil sis s chlapcem a dal jsi mu hracku";
-        }
-    }
-    return "Nelze provest";   
-    }
+        if ( STEM11Texts.OBJEDNAVKA_DO_KNIHKUPECTVI.equalsIgnoreCase(itemCommodity)
+                && 
+                STEM11Texts.PRODAVACKA.equalsIgnoreCase(itemReciver)){
+                
+                    STEM11Item kniha = new STEM11Item(STEM11Texts.KUCHARKA);
+                    boolean added = bag.tryAddItem(kniha);
+                    if (added) {
+                        STEM11Item objednavka = oItem.get();
+                        bag.removeItem(objednavka);
+                        return STEM11Texts.mGIVE + STEM11Texts.PRODAVACKA
+                                + " " + STEM11Texts.OBJEDNAVKA_DO_KNIHKUPECTVI
+                                + STEM11Texts.mRECIVED + STEM11Texts.KUCHARKA;
+                    }
+                    else {
+                        return STEM11Texts.mBAG_FULL;
+                    }
+            }
+
+            if ( STEM11Texts.PENIZE.equalsIgnoreCase(itemCommodity)
+                && 
+                STEM11Texts.UREDNIK.equalsIgnoreCase(itemReciver)){
+                
+                STEM11State.setElectricityPaid(true);
+                STEM11Item penize = oItem.get();
+                bag.removeItem(penize);
+                return STEM11Texts.mPAID;
+            }
+            return STEM11Texts.mNOT_HAVE;
+            }
 
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
 

@@ -55,15 +55,16 @@ abstract class STEM11AAction extends ANamed implements IAction
     static {
         isAlive = false;
         NAME_2_ACTION = new HashMap<>();
-        new ActionHelp();
-        new ActionMove();
-        new ActionTake();
-        new ActionPutDown();
-        new ActionExit();
-        new ActionGive();
-        new ActionUse();
-        new ActionTalk();
-        new ActionBuy();
+        new tsPICK_UP();
+        new tsMOVE();
+        new tsHELP();
+        new tsPUT_DOWN();
+        new tsEND();
+       // new tsUSE();
+        //new tsREPAIR();
+        new tsGIVE();
+       // new tsTALK();
+        //new tsOPEN();
             }
 
 

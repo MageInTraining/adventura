@@ -18,7 +18,7 @@ package com.github.MageInTraining.adventura.game;
  * @author  Rudolf PECINOVSKÝ
  * @version 2015-Podzim
  */
-class tsEND extends AAction
+class tsEND extends STEM11AAction
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 //== VARIABLE CLASS ATTRIBUTES =================================================
@@ -71,7 +71,7 @@ class tsEND extends AAction
     @Override
     public String execute(String... arguments)
     {
-     AAction.stopGame();
+     STEM11AAction.stopGame();
      return "Ukoncil jsi hru";
     }
 

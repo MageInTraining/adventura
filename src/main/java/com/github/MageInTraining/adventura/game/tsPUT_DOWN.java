@@ -21,7 +21,7 @@ import java.util.Optional;
  * @author  Rudolf PECINOVSKÝ
  * @version 2015-Podzim
  */
-class tsPUT_DOWN extends AAction
+class tsPUT_DOWN extends STEM11AAction
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 //== VARIABLE CLASS ATTRIBUTES =================================================
@@ -78,14 +78,14 @@ class tsPUT_DOWN extends AAction
             return "Vec nejde polozit";
         }
         String      itemName = arguments[1];
-        Bag              bag = Bag.getInstance();
-        Optional<Item> oItem = INamed.getO(itemName, bag.getItems());
+        STEM11Bag              bag = STEM11Bag.getInstance();
+        Optional<STEM11Item> oItem = INamed.getO(itemName, bag.getItems());
         if (! oItem.isPresent()) {
             return "Neni v batohu " + itemName;
         }
-        Item item = oItem.get();
+        STEM11Item item = oItem.get();
         bag.removeItem(item);
-        Area currentArea   = World.getInstance().getCurrentSpace();
+        Area currentArea   = STEM11World.getInstance().getCurrentSpace();
         currentArea.addItem(item);
         return "Upustil jsi " + itemName;
     }

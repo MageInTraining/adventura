@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  * @author  Rudolf PECINOVSKÝ
  * @version 2015-Podzim
  */
-class tsHELP extends AAction
+class tsHELP extends STEM11AAction
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 //== VARIABLE CLASS ATTRIBUTES =================================================
@@ -61,26 +61,30 @@ class tsHELP extends AAction
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 
     /***************************************************************************
-     * Metoda realizující reakci hry na zadání daného příkazu.
-     * Počet parametrů je závislý na konkrétním příkazu,
-     * např. příkazy <i>konec</i> a <i>nápověda</i> nemají parametry,
-     * příkazy <i>jdi</i> a <i>seber</i> mají jeden parametr
-     * příkaz <i>použij</i> muže mít dva parametry atd.
+     * Processes the command composed from the given words
+     * and returns the game answer to the user.
+     * Number of word depends on particular action, however it must be
+     * at least one, because the zeroth element contains the action name.
+     * The remaining words are arguments of this action and they may differ:
+     * the actions of <i>end</i> and <i>help</i> type do not have any,
+     * the actions of <i>go</i> and <i>take</i> type have one,
+     * the actions of <i>apply</i> type ) can have two (e.g. apply key lock)
+     * or three (e.g. apply key to lock) etc.
      *
-     * @param arguments Parametry příkazu;
-     *                  jejich počet muže byt pro každý příkaz jiný
-     * @return Text zprávy vypsané po provedeni příkazu
+     * @param arguments Action arguments –
+     *                  their number can be different for each action,
+     *                  but for all execution of the same action is the same
+     * @return The answer of the game after processing the command
      */
     @Override
     public String execute(String... arguments)
     {
-        Game game = Game.getInstance();
-        Collection<AAction> commands = game.getAllActions();
-        String result =  Text.t_HELP ;/*commands.stream()
-            .map(cmd -> cmd.getName() + "\n" +
-            cmd.getDescription())
-            .collect(Collectors.joining("\n\n", Text.t_HELP, ""));*/
-        return result;   
+        Collection<STEM11AAction> actions = getAllActions();
+        String result = actions.stream()
+            .map(action -> '\n' + action.getName()
+                         + '\n' + action.getDescription())
+            .collect(Collectors.joining("\n\n", STEM11Texts.mHELP, ""));
+        return result;
     }
 
 

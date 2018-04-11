@@ -20,7 +20,7 @@ import java.util.Optional;
  * @author  Rudolf PECINOVSKÝ
  * @version 2015-Podzim
  */
-class tsMOVE extends AAction
+class tsMOVE extends STEM11AAction
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 //== VARIABLE CLASS ATTRIBUTES =================================================
@@ -60,53 +60,31 @@ class tsMOVE extends AAction
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 
     /***************************************************************************
-     * Metoda realizující reakci hry na zadání daného příkazu.
-     * Počet parametrů je závislý na konkrétním příkazu,
-     * např. příkazy <i>konec</i> a <i>nápověda</i> nemají parametry,
-     * příkazy <i>jdi</i> a <i>seber</i> mají jeden parametr
-     * příkaz <i>použij</i> muže mít dva parametry atd.
+/***************************************************************************
+     * Moves the player into the space (room) given in an argumenant.
+     * Requires that this space has to be a neighbor of the current space,
+     * otherwise nothing will be done and the command is reported as wrong.
      *
-     * @param arguments Parametry příkazu;
-     *                  jejich počet muže byt pro každý příkaz jiný
-     * @return Text zprávy vypsané po provedeni příkazu
+     * @param arguments Parameter of the command
+     * @return The message text written after accomplishing the command
      */
     @Override
     public String execute(String... arguments)
     {
         if (arguments.length < 2) {
-            return "Tam nejde jit";
+            return STEM11Texts.mNO_TARGET;
         }
         String destinationName = arguments[1];
-        Area   currentArea     = World.getInstance().getCurrentSpace();
+        Area   currentRoom     =
+                                    STEM11World.getInstance().getCurrentSpace();
         Optional<Area> oDestination = INamed.getO(destinationName,
-                                                  currentArea.getNeighbors());
+                                                  currentRoom.getNeighbors());
         if (! oDestination.isPresent()) {
-            return "Tam nejde jit " + destinationName;
+            return STEM11Texts.mNOT_NEIGHBOR + destinationName;
         }
-        
-        switch (destinationName){
-            case "pokoj":
-            if (! getOpendPokoj()){
-            return "Pokoj neni otevren";
-            }
-            break;
-            
-            case "pracovna":
-            if (! getOpendPracovna()){
-            return "Pracovna neni otevrena";
-            }
-            break;
-            
-            case "garaz":
-            if (! getOpendGaraz()){
-            return "Garaz neni otevrena";
-            }
-            break;
-        }
-        
-        Area destinationArea = oDestination.get();
-        World.getInstance().setCurrentArea(destinationArea);
-        return "Presel jsi do " + destinationArea.getName();
+        Area destinationRoom = oDestination.get();
+        STEM11World.getInstance().setCurrentArea(destinationRoom);
+        return STEM11Texts.mMOVED + destinationRoom.getName();
     }
 
 

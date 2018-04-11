@@ -105,7 +105,7 @@ class STEM11World implements IWorldG
                             new Point (560 ,70 )));
         Areas.add(new Area("OVOCE_A_ZELENINA",
                             new String[] {"OBCHODAK"},
-                            new String[] {" CIBULE_A_BRAMBORY" },
+                            new String[] {"CIBULE_A_BRAMBORY" },
                             new Point (560 , 370)));
     }
 

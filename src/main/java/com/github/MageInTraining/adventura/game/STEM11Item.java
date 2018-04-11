@@ -56,47 +56,47 @@ class STEM11Item extends STEM11KureGame implements IItemG
     STEM11Item(String name){
         super(name);
         switch (name){
-            case "Peníze":
+            case "penize":
             	this.name = name;    
             	this.pickable =true;
             break;
             
-            case "Objednávka_do_knihkupectví":
+            case "objednavka_do_knihkupectvi":
             	this.name = name;    
                 this.pickable =true;
             break;
             
-            case "Trouba":
+            case "trouba":
             	this.name = name;    
                 this.pickable =false;
             break;
             
-            case "Bankomat":
+            case "bankomat":
             	this.name = name;    
                 this.pickable =false;
             break;
             
-            case "Prodavačka":
+            case "prodavacka":
             	this.name = name;    
                 this.pickable =false;
             break;
             
-            case "Kuchařka":
+            case "kucharka":
             	this.name = name;    
                 this.pickable =true;
             break;
             
-            case "Úředník":
+            case "urednik":
             	this.name = name;    
                 this.pickable =false;
             break;
             
-            case "Kuře":
+            case "kure":
             	this.name = name;    
                 this.pickable =true;
             break;
             
-            case "Cibule_a_brambory":
+            case "cibule_a_brambory":
             	this.name = name;    
                 this.pickable =true;
             break;

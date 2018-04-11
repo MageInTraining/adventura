@@ -21,7 +21,7 @@ import java.util.Optional;
  * @author  Rudolf PECINOVSKÝ
  * @version 2015-Podzim
  */
-class tsTALK extends AAction
+class tsTALK extends STEM11AAction
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 //== VARIABLE CLASS ATTRIBUTES =================================================
@@ -74,75 +74,23 @@ private boolean mluvilRodina;
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 
-    /***************************************************************************
-     * Metoda realizující reakci hry na zadání daného příkazu.
-     * Počet parametrů je závislý na konkrétním příkazu,
-     * např. příkazy <i>konec</i> a <i>nápověda</i> nemají parametry,
-     * příkazy <i>jdi</i> a <i>seber</i> mají jeden parametr
-     * příkaz <i>použij</i> muže mít dva parametry atd.
-     *
-     * @param arguments Parametry příkazu;
-     *                  jejich počet muže byt pro každý příkaz jiný
-     * @return Text zprávy vypsané po provedeni příkazu
-     */
-    @Override
     public String execute(String... arguments)
     {
-        if (arguments.length < 2) {
-            return "Nelze mluvit";
-        }
-        String itemName      = arguments[1];
-        Area   currentArea   = World.getInstance().getCurrentSpace();
-        Optional<Item> oItem = INamed.getO(itemName, currentArea.getItems());
-        if (! oItem.isPresent()) {
-            return "Nelze mluvit s " + itemName;
-        }    
-        Item item = oItem.get();
-        
-        switch (itemName) {    
-            case "recepcni":
-            if (! mluvilRecepcni){
-                Item klic = new Item("Klic_od_pokoje");
-                Bag bag = Bag.getInstance();
-                boolean added = bag.tryAddItem(klic);
-                if (added) {
-                    mluvilRecepcni=true;
-                    return "Promluvil jsis s recepcnim a ten ti dal pokoj";
-                } else {
-                    return "Batoh plny";
-                }
-            }   else{
-                return "Recepcni te ignoruje"; 
-            }
-        
-            case "chlapec":
-            return "Maminka mi rikala abych nemluvim s cizimy lidmy";
-            
-            case "majitel":
-            if (! mluvilMajitel){
-                mluvilMajitel = true;
-                return "Vypadate unavene jdete si odpocinout";
-            }else{
-                return "Majitel vas ignoruje";
-            }
-            
-            case "rodina":
-            if (! mluvilRodina){
-                mluvilRodina = true;
-                return "Ten by sel taky Karle";
-            }else{
-                return "Rodice chlapce te ignoruji";
-            }
+    if (arguments.length < 2) {    
+        return STEM11Texts.mNOT_TALK; 
     }
-    return "nelze mluvit"; 
+    
+    String itemName      = arguments[1];
+    Area   currentRoom   =
+                                    STEM11World.getInstance().getCurrentSpace();
+    Optional<STEM11Item> oItem = INamed.getO(itemName, currentRoom.getItems());
+    if (! oItem.isPresent()) {
+        return STEM11Texts.mNOT_HERE + itemName;
+    }
+    return STEM11Texts.mGIMMME_MONEY;
     }
 
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
-    void initialize(){
-        mluvilRecepcni= false;
-        mluvilMajitel = false;
-        mluvilRodina  = false;
-    }
 //##############################################################################
 //== NESTED DATA TYPES =========================================================
 }

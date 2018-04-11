@@ -20,13 +20,10 @@ import java.util.Optional;
  * @author  Rudolf PECINOVSKÝ
  * @version 2015-Podzim
  */
-class tsUSE extends AAction
+class tsUSE extends STEM11AAction
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 //== VARIABLE CLASS ATTRIBUTES =================================================
-private  boolean zvonil;
-private  boolean volal;
-private  boolean spal ;
 
     private static final tsUSE SINGLETON = new tsUSE();
 
@@ -74,96 +71,70 @@ private  boolean spal ;
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 
     /***************************************************************************
-     * Metoda realizující reakci hry na zadání daného příkazu.
-     * Počet parametrů je závislý na konkrétním příkazu,
-     * např. příkazy <i>konec</i> a <i>nápověda</i> nemají parametry,
-     * příkazy <i>jdi</i> a <i>seber</i> mají jeden parametr
-     * příkaz <i>použij</i> muže mít dva parametry atd.
+     * Removes the item given in an argumenant from the current space (room)
+     * and puts it into the bag.
+     * But it requires so that the item with the given name<br>
+     * a) would be located in the current space,<br>
+     * b) could be picked up and<br>
+     * c) would fit into the bag.<br>
+     * Otherwise nothing will be done and the command is reported as wrong.
      *
-     * @param arguments Parametry příkazu;
-     *                  jejich počet muže byt pro každý příkaz jiný
-     * @return Text zprávy vypsané po provedeni příkazu
+     * @param arguments Parameters of the command
+     * @return The message text written after accomplishing the command
      */
     @Override
     public String execute(String... arguments)
     {
         if (arguments.length < 2) {
-            return "Nelze pouzit";
+            return STEM11Texts.mNOTHING_TO_USE;
         }
         String itemName      = arguments[1];
-        Area   currentArea   = World.getInstance().getCurrentSpace();
-        Optional<Item> oItem = INamed.getO(itemName, currentArea.getItems());
+        Area   currentSpace   =
+                                    STEM11World.getInstance().getCurrentSpace();
+        Optional<STEM11Item> oItem = INamed.getO(itemName, currentSpace.getItems());
         if (! oItem.isPresent()) {
-            return "Nelze pouzit " + itemName;
-        }    
-        Item item = oItem.get();
-        
-        switch (itemName) {
-            case "zvonek":
-            if (! zvonil){
-                zvonil = true;    
-                Item recep = new Item("Recepcni");
-                currentArea.addItem(recep);
-                return "Prisel recepcni";
-            }
-                else {
-                    return "Nic se nestalo";
-            }
-            
-            case "telefon":
-            if (! volal){
-                Item naradi = new Item("Naradi");
-                Bag bag = Bag.getInstance();
-                boolean added = bag.tryAddItem(naradi);
-                if (added) {
-                    volal = true;  
-                    return "Zavolal jsi odtahovku";
-                } else {
-                    return "Batoh plny";
-                }
-            }
-                else{
-                    return "Telefon je hluchy";
-            }
-           
-            case "auto":
-            if (! getOpendAuto()){
-            return "Auto neni otevreno";
-            }
-            AAction.stopGame();
-            return "Odejel jsi s autem pryc GAME OVER";
-            
-            case "postel":
-            if (! spal){
-            Optional<Area> oDestination = INamed.getO("Jidelna",
-                                          World.getInstance().getAllSpaces());
-            Area destinationArea = oDestination.get();   
-            World.getInstance().setCurrentArea(destinationArea);
-            Item maj = new Item("Majitel");
-            Item rod = new Item("Rodina");
-            destinationArea.addItem(maj);
-            destinationArea.addItem(rod);
-            spal = true;
-            return "Sel jsi spat a rano ses presunul do jidelny"; 
-        }else{
-             AAction.stopGame();
-          return "Prepadli te ve spanku a objetovali starym bohum GAME OVER";
+            return STEM11Texts.mNOT_HERE + itemName;
         }
+        if (STEM11Texts.BANKOMAT.equalsIgnoreCase(itemName)){
+            STEM11Item item = new STEM11Item(STEM11Texts.PENIZE);
+            STEM11Bag bag = STEM11Bag.getInstance();
+            boolean added = bag.tryAddItem(item);
+            if (added) {
+//                currentSpace.removeItem(item);
+                return STEM11Texts.mUSED;
+            }
+            else {
+            return STEM11Texts.mBAG_FULL;
+            }
         }
-        return "Nelze pouzit";
+
+        if (STEM11Texts.KUCHARKA.equalsIgnoreCase(itemName)){
+            STEM11State.setKnowRecipe(true);
+            return STEM11Texts.mUSED;
+        }
+
+/*        if (STEM11Texts.TROUBA.equalsIgnoreCase(itemName) &&
+            STEM11State.isElectricityPaid() == true &&
+            STEM11State.knowRecipe() == true){
+            
+            STEM11Bag            bag = STEM11Bag.getInstance();
+            Optional<STEM11Item> oItem3 = bag.tryAddItem(item);
+            Optional<STEM11Item> oItem4 = bag.tryAddItem
+                                                (STEM11Texts.CIBULE_A_BRAMBORY);
+            if ( oItem3.isPresent() && oItem4.isPresent() ) {
+                return STEM11Texts.mUSED;
+            }
+            else{
+                return STEM11Texts.mNOT_HAVE;
+            }
+        }*/
+
+        return STEM11Texts.mUNUSABLE;
     }
 
 
 
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
-
-    void initialize(){
-        zvonil = false;
-        volal  = false;
-        spal   = false;
-    
-    }
-
 //##############################################################################
 //== NESTED DATA TYPES =========================================================
 }
