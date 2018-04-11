@@ -3,12 +3,8 @@
  */
 package com.github.MageInTraining.adventura.game;
 
-import com.github.MageInTraining.adventura.STEM11GSMFactory;
-
 import eu.pedu.adv16w_fw.game_gui.IGSMFactoryG;
 import eu.pedu.adv16w_fw.scenario.AScenarioManagerG;
-
-import com.github.MageInTraining.adventura.ISTEM11Prototype;
 import eu.pedu.adv16w_fw.scenario.AScenarioManager;
 import eu.pedu.adv16w_fw.scenario.ScenarioStep;
 import eu.pedu.adv16w_fw.scenario.TypeOfScenario;

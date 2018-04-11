@@ -3,11 +3,20 @@
  */
 package com.github.MageInTraining.adventura.game;
 
-import com.github.MageInTraining.adventura.ISTEM11Prototype;
+import com.github.MageInTraining.adventura.DATA.Data;
+
 import eu.pedu.adv16w_fw.game_txt.BasicActions;
 import eu.pedu.adv16w_fw.game_txt.IBag;
 import eu.pedu.adv16w_fw.game_txt.IGame;
+import eu.pedu.adv16w_fw.game_gui.IBagG;
+import eu.pedu.adv16w_fw.game_gui.IGSMFactoryG;
+import eu.pedu.adv16w_fw.game_gui.IGameG;
+import eu.pedu.adv16w_fw.game_gui.IListener;
+import eu.pedu.adv16w_fw.game_gui.ISpaceG;
+import eu.pedu.adv16w_fw.game_gui.Icon;
+import eu.pedu.adv16w_fw.game_txt.IGSMFactory;
 
+import java.net.URL;
 import java.util.Collection;
 
 
@@ -30,18 +39,27 @@ import java.util.Collection;
  * @author  Milan STEHLÍK
  * @version 2017-Winter
  */
-public class STEM11Game extends ANamed implements IGame, ISTEM11Prototype
+public class STEM11Game extends ANamed implements IGameG, ISTEM11Prototype
 {
 //== CONSTANT CLASS FIELDS =====================================================
 
     /** The crate keeping the mandatory action names. */
-    private static final BasicActions BASIC_ACTIONS =
+    /*private static final BasicActions BASIC_ACTIONS =
                      new BasicActions(STEM11Texts.aGOTO, STEM11Texts.aTAKE,
                                       STEM11Texts.aPUT_DOWN,
-                                      STEM11Texts.aHELP, STEM11Texts.aEXIT);
+                                      STEM11Texts.aHELP, STEM11Texts.aEXIT);*/
+	
+	private static final BasicActions BASIC_ACTIONS =
+            new BasicActions("tsMOVE", "tsPICK_UP", "tsPUT_DOWN",
+                                    "tsHELP", "tsEND");
 
     /** The reference to the only instance (singleton) of this game. */
     private static final STEM11Game SINGLETON = new STEM11Game();
+    
+    /** Tovární třída, jejíž instancemi jsou tovární objekty poskytující
+     *  instanci správce scénářů i hry, jejíž scénáře daný správce spravuje. */
+    private final static Class<? extends IGSMFactoryG> FACTORY_CLASS =
+                                                        STEM11GSMFactory.class;
 
 
 
@@ -104,6 +122,18 @@ public class STEM11Game extends ANamed implements IGame, ISTEM11Prototype
     {
         return STEM11AAction.isAlive(); 
     }
+    
+    /***************************************************************************
+     * Vrátí class-objekt tovární třídy, jejíž instance umějí zprostředkovat
+     * získání všech klíčových objektů aplikace.
+     *
+     * @return Class-objekt tovární třídy
+     */
+    @Override
+    public Class<? extends IGSMFactoryG> getFactoryClass()
+    {
+        return FACTORY_CLASS;
+    }
 
 
     /***************************************************************************
@@ -112,7 +142,7 @@ public class STEM11Game extends ANamed implements IGame, ISTEM11Prototype
      * @return The bag to which the player saves the taken items
      */
     @Override
-    public IBag getBag()
+    public IBagG getBag()
     {
         return STEM11Bag.getInstance();
     }
@@ -195,4 +225,20 @@ public class STEM11Game extends ANamed implements IGame, ISTEM11Prototype
 
 //##############################################################################
 //== NESTED DATA TYPES =========================================================
+    
+
+    @Override
+    public URL getHelpURL() {
+        return Data.class.getResource("Help.html");
+    }
+
+    @Override
+    public Icon getMap() {
+        return new Icon(Data.class.getResource("SpaceMap.png"));
+    }
+
+    @Override
+    public Icon getPlayer() {
+        return new Icon(Data.class.getResource("Player.png"));
+    }
 }

@@ -1,14 +1,13 @@
 /* The file is saved in UTF-8 codepage.
  * Check: «Stereotype», Section mark-§, Copyright-©, Alpha-α, Beta-β, Smile-☺
  */
-package com.github.MageInTraining.adventura;
+package com.github.MageInTraining.adventura.game;
 
 import eu.pedu.adv16w_fw.game_gui.IGSMFactoryG;
 import eu.pedu.adv16w_fw.scenario.AScenarioManagerG;
 
-import com.github.MageInTraining.adventura.game.STEM11ScenarioManager;
 import com.github.MageInTraining.adventura.textui.UIA_JOptionPane;
-import com.github.MageInTraining.adventura.game.STEM11Game;
+
 import eu.pedu.adv16w_fw.game_txt.IGSMFactory;
 import eu.pedu.adv16w_fw.game_txt.IUI;
 import eu.pedu.adv16w_fw.scenario.AScenarioManager;
@@ -80,13 +79,13 @@ public class STEM11GSMFactory implements IGSMFactoryG, ISTEM11Prototype
      *
      * @return Required game
      */
-    /*
+
     @Override
     public STEM11Game getGame()
     {
         return STEM11Game.getInstance();
     }
-	*/
+
 
     /***************************************************************************
      * Returns the object executing the user interface.

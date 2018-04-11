@@ -5,8 +5,8 @@
  */
 package com.github.MageInTraining.adventura.gui;
 
-import com.github.MageInTraining.adventura.STEM11GSMFactory;
 import com.github.MageInTraining.adventura.game.IAuthorMe;
+import com.github.MageInTraining.adventura.game.STEM11GSMFactory;
 
 import eu.pedu.adv16w_fw.game_gui.IGSMFactoryG;
 

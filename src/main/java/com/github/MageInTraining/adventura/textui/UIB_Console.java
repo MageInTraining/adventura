@@ -6,7 +6,7 @@ package com.github.MageInTraining.adventura.textui;
 import eu.pedu.adv16w_fw.game_txt.IGame;
 import eu.pedu.adv16w_fw.game_txt.IUI;
 
-import com.github.MageInTraining.adventura.ISTEM11Prototype;
+import com.github.MageInTraining.adventura.game.ISTEM11Prototype;
 import com.github.MageInTraining.adventura.game.STEM11Game;
 
 import java.util.Scanner;

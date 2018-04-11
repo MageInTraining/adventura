@@ -3,9 +3,12 @@
  */
 package com.github.MageInTraining.adventura.game;
 
-import eu.pedu.adv16w_fw.game_txt.IBag;
+import eu.pedu.adv16w_fw.game_gui.IBagG;
+//import eu.pedu.adv16w_fw.game_txt.IBag;
 
-
+import java.util.Collection;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /*******************************************************************************
  * Instance of the {@code STEM11Bag} class represents the handbag,
@@ -14,19 +17,14 @@ import eu.pedu.adv16w_fw.game_txt.IBag;
  * The disposal site has a final capacity defining the maximal permitted
  * sum of weights of items occuring in the repository.
  * <p>
- * In this game the bag is a handbag
- * with capacity 3
- * The item weight represents the weight and bulk of the item
  *
  * @author  Milan STEHLÍK
  * @version 2017-Winter
  */
-class STEM11Bag extends AItemContainer implements IBag
+class STEM11Bag  implements IBagG
 {
 //== CONSTANT CLASS FIELDS =====================================================
 
-    /** Capacity of the bag. */
-    static final int CAPACITY = 3;
 
     /** The only instance of the bag in the game. */
     private static final STEM11Bag SINGLETON = new STEM11Bag();
@@ -49,10 +47,10 @@ class STEM11Bag extends AItemContainer implements IBag
 //== CONSTANT INSTANCE FIELDS ==================================================
 //== VARIABLE INSTANCE FIELDS ==================================================
 
-    /** Free capacity of the bag. */
-    private int remains;
-
-
+    private static final int Kapacita = 4;
+    private int Zaplneni = 0;
+    private Collection<STEM11Item> items;
+    private Collection<STEM11Item> exportedItems;
 
 //##############################################################################
 //== CONSTRUCTORS AND FACTORY METHODS ==========================================
@@ -66,98 +64,78 @@ class STEM11Bag extends AItemContainer implements IBag
     {
         return SINGLETON;
     }
-
-
+    
     /***************************************************************************
+     * Konstruktor seznam věci v batohu
      */
-    STEM11Bag()
+    public STEM11Bag()
     {
-        super("Taška");
+        this.items         = new ArrayList<>();
+        this.exportedItems = Collections.unmodifiableCollection(items);
     }
-
-
 
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
 
     /***************************************************************************
-     * Returns the bag capacity, i.e. the maximal permitted sum
-     * of weights of items, that can be put into the bag at the same time.
+     * Vloží věc do batohu, pokud se tam vejde
+     * @return true když se věc vloží, false, pokud se nevložila
+     * @param objekt třídy Vec
+     */
+    public boolean tryAddItem (STEM11Item item) {
+        if (Zaplneni < Kapacita ) {
+            items.add(item);
+            Zaplneni++;
+            return true;
+        }
+        return false;
+    }
+    
+    /***************************************************************************
+     * Vrátí kapacitu batohu, tj. maximální povolený součet vah objektů,
+     * které je možno současně uložit do batohu.
      *
-     * @return Capacity of the bag
+     * @return Kapacita batohu
      */
     @Override
     public int getCapacity()
     {
-        return CAPACITY;
+        return Kapacita;
     }
-
-
+    
     /***************************************************************************
-     * Returns information if the bag is full,
-     * or if some item can be still put in.
+     * Vrátí kolekci objektů uložených v batohu.
      *
-     * @return {@code true} if it is full, {@code false} otherwise
+     * @return Kolekce objektů v batohu
      */
-    boolean isFull()
+    @Override
+    public Collection<STEM11Item> getItems() 
     {
-        return remains == 0;
+        return exportedItems;
     }
 
-
-
-//== OTHER NON-PRIVATE INSTANCE METHODS ========================================
-
     /***************************************************************************
-     * The method initializing the bag.
-     * As the player of this game has an empty bag at the game beginning,
-     * this method can only clean the {@link #items} collection.
+     * Metoda inicializující batoh.
+     * Protože v této hře má hráč na počátku hry prázdný batoh,
+     * stačí pouze vyčistit kolekci {@link #items}.
      */
     void initialize()
     {
-        initializeItems();
-        remains = CAPACITY;
+        items.clear();
     }
 
-
     /***************************************************************************
-     * Removes the given item from the bag
-     * and increases the free capacity of the bag.
+     * Odebere zadaný předmět ze své kolekce batohu.
      *
-     * @param item Item taken away
+     * @param item Odebíraný předmět
      */
-    @Override
     void removeItem(STEM11Item item)
     {
-        super.removeItem(item);
-        remains += item.getWeight();
-    }
-
-
-    /***************************************************************************
-     * If the given item fits to the bag, it adds it;
-     * after that it returns the message on the result.
-     *
-     * @param item The item that has to be added into the bag
-     * @return The message on the result: {@code true} = was added,
-     *         {@code false} = was not added
-     */
-    boolean tryAddItem(STEM11Item item)
-    {
-        if (item.getWeight() > remains) {
-            return false;
-        }
-        addItem(item);
-        remains -= item.getWeight();
-        return true;
-    }
-
-
-
+        Zaplneni--;
+        items.remove(item);
+    }  
+//== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
-
-
-
 //##############################################################################
 //== NESTED DATA TYPES =========================================================
 }

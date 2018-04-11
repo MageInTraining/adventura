@@ -3,7 +3,13 @@
  */
 package com.github.MageInTraining.adventura.game;
 
-import eu.pedu.adv16w_fw.game_txt.IItem;
+import com.github.MageInTraining.adventura.DATA.Data;
+
+//import eu.pedu.adv16w_fw.game_txt.IItem;
+import eu.pedu.adv16w_fw.game_gui.IItemG;
+import eu.pedu.adv16w_fw.game_gui.Icon;
+
+import java.net.URL;
 
 
 
@@ -15,7 +21,7 @@ import eu.pedu.adv16w_fw.game_txt.IItem;
  * @author  Milan STEHLÍK
  * @version 2017-Winter
  */
-class STEM11Item extends ANamed implements IItem
+class STEM11Item extends STEM11KureGame implements IItemG
 {
 //== CONSTANT CLASS FIELDS =====================================================
 
@@ -31,19 +37,11 @@ class STEM11Item extends ANamed implements IItem
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
 
-
+	private String name;    
+	private boolean pickable;
 
 //##############################################################################
-//== CONSTANT INSTANCE FIELDS ==================================================
-
-    /** Weight of the item. */
-    private final int weight;
-
-
 //== VARIABLE INSTANCE FIELDS ==================================================
-
-
-
 //##############################################################################
 //== CONSTRUCTORS AND FACTORY METHODS ==========================================
 
@@ -55,41 +53,54 @@ class STEM11Item extends ANamed implements IItem
      *
      * @param name The name of the created item
      */
-    STEM11Item(String name)
-    {
+    STEM11Item(String name){
         super(name);
-                  switch (name){
+        switch (name){
             case "Peníze":
-            this.weight =1;
+            	this.name = name;    
+            	this.pickable =true;
             break;
             
             case "Objednávka_do_knihkupectví":
-            this.weight =1;
+            	this.name = name;    
+                this.pickable =true;
             break;
             
             case "Trouba":
-            this.weight =10;
+            	this.name = name;    
+                this.pickable =false;
             break;
+            
             case "Bankomat":
-            this.weight =10;
+            	this.name = name;    
+                this.pickable =false;
             break;
+            
             case "Prodavačka":
-            this.weight =10;
+            	this.name = name;    
+                this.pickable =false;
             break;
+            
             case "Kuchařka":
-            this.weight =1;
+            	this.name = name;    
+                this.pickable =true;
             break;
+            
             case "Úředník":
-            this.weight =10;
+            	this.name = name;    
+                this.pickable =false;
             break;
+            
             case "Kuře":
-            this.weight =1;
+            	this.name = name;    
+                this.pickable =true;
             break;
+            
             case "Cibule_a_brambory":
-            this.weight =1;
+            	this.name = name;    
+                this.pickable =true;
             break;
-            default:
-            this.weight= 1;
+            
             }
     }
 
@@ -99,16 +110,19 @@ class STEM11Item extends ANamed implements IItem
 //== INSTANCE GETTERS AND SETTERS ==============================================
 
     /***************************************************************************
-     * Returns the item weight, and/or the corresponding characteristics.
-     * The items that cannot be raised
-     * have higher weight than the bag capacity is.
+     * Vrátí váhu předmětu, resp. charakteristiku jí odpovídající.
+     * Objekty, které není možno zvednout,
+     * mají váhu větší, než je kapacita batohu.
      *
-     * @return Weight of the item
+     * @return Váha objektu
      */
     @Override
     public int getWeight()
     {
-        return weight;
+     if (pickable) {
+        return 1;
+    }
+     return 10;   
     }
 
 
@@ -120,4 +134,10 @@ class STEM11Item extends ANamed implements IItem
 
 //##############################################################################
 //== NESTED DATA TYPES =========================================================
+    
+    @Override
+    public Icon getPicture() {
+         URL url = Data.class.getResource("/DATA/" + name + ".png");
+         return new Icon(url);
+    }
 }

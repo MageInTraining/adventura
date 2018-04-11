@@ -1,9 +1,8 @@
 /* The file is saved in UTF-8 codepage.
  * Check: «Stereotype», Section mark-§, Copyright-©, Alpha-α, Beta-β, Smile-☺
  */
-package com.github.MageInTraining.adventura;
+package com.github.MageInTraining.adventura.game;
 
-import com.github.MageInTraining.adventura.STEM11GSMFactory;
 import eu.pedu.adv16w_fw.game_txt.IGSMFactory;
 import eu.pedu.adv16w_fw.game_txt.IGSMFactoryProduct;
 
