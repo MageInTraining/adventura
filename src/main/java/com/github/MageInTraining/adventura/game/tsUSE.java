@@ -95,8 +95,8 @@ class tsUSE extends STEM11AAction
         if (! oItem.isPresent()) {
             return STEM11Texts.mNOT_HERE + itemName;
         }
-        if (STEM11Texts.BANKOMAT.equalsIgnoreCase(itemName)){
-            STEM11Item item = new STEM11Item(STEM11Texts.PENIZE);
+        if (STEM11Texts.bankomat.equalsIgnoreCase(itemName)){
+            STEM11Item item = new STEM11Item(STEM11Texts.penize);
             STEM11Bag bag = STEM11Bag.getInstance();
             boolean added = bag.tryAddItem(item);
             if (added) {
@@ -108,19 +108,19 @@ class tsUSE extends STEM11AAction
             }
         }
 
-        if (STEM11Texts.KUCHARKA.equalsIgnoreCase(itemName)){
+        if (STEM11Texts.kucharka.equalsIgnoreCase(itemName)){
             STEM11State.setKnowRecipe(true);
             return STEM11Texts.mUSED;
         }
 
-/*        if (STEM11Texts.TROUBA.equalsIgnoreCase(itemName) &&
+/*        if (STEM11Texts.trouba.equalsIgnoreCase(itemName) &&
             STEM11State.isElectricityPaid() == true &&
             STEM11State.knowRecipe() == true){
             
             STEM11Bag            bag = STEM11Bag.getInstance();
             Optional<STEM11Item> oItem3 = bag.tryAddItem(item);
             Optional<STEM11Item> oItem4 = bag.tryAddItem
-                                                (STEM11Texts.CIBULE_A_BRAMBORY);
+                                                (STEM11Texts.cibule_a_brambory);
             if ( oItem3.isPresent() && oItem4.isPresent() ) {
                 return STEM11Texts.mUSED;
             }

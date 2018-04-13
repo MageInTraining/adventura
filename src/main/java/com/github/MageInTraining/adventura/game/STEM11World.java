@@ -75,7 +75,7 @@ class STEM11World implements IWorldG
         exportedAreas = Collections.unmodifiableCollection(Areas);
         startingArea = new Area("BYT",
                            new String[] {"SIDLISTE"},
-                           new String[] {"PENIZE", "OBJEDNAVKA_DO_KNIHKUPECTVI", "TROUBA"},
+                           new String[] {"penize", "objednavka_do_knihkupectvi", "trouba"},
                            new Point (330 ,210 ));
         Areas.add(startingArea);
         Areas.add(new Area("SIDLISTE",
@@ -84,15 +84,15 @@ class STEM11World implements IWorldG
                            new Point (280 ,70 )));
         Areas.add(new Area("CENTRUM",
                             new String[] {"SIDLISTE", "OBCHODAK", "KNIHKUPECTVI", "ENERGETICKA_SPOLECNOST"},
-                            new String[] {"BANKOMAT"},
+                            new String[] {"bankomat"},
                             new Point (90 ,120 )));
         Areas.add(new Area("KNIHKUPECTVI",
                             new String[] {"CENTRUM"},
-                            new String[] {"PRODAVACKA"},
+                            new String[] {"prodavacka"},
                             new Point (110 ,260 )));
         Areas.add(new Area("ENERGETICKA_SPOLECNOST",
                             new String[] {"CENTRUM"},
-                            new String[] {"UREDNIK" },
+                            new String[] {"urednik" },
                            new Point (280 ,370 )));
         Areas.add(new Area("OBCHODAK",
                             new String[] {"SIDLISTE", "CENTRUM", "MASNA", "OVOCE_A_ZELENINA"},
@@ -101,11 +101,11 @@ class STEM11World implements IWorldG
                             new Point (560 ,230 )));
         Areas.add(new Area("MASNA",
                             new String[] {"OBCHODAK"},
-                            new String[] {"KURE"},
+                            new String[] {"kure"},
                             new Point (560 ,70 )));
         Areas.add(new Area("OVOCE_A_ZELENINA",
                             new String[] {"OBCHODAK"},
-                            new String[] {"CIBULE_A_BRAMBORY" },
+                            new String[] {"cibule_a_brambory" },
                             new Point (560 , 370)));
     }
 

@@ -3,7 +3,11 @@
  */
 package com.github.MageInTraining.adventura.game;
 
+import com.github.MageInTraining.adventura.game.STEM11Item;
 import eu.pedu.adv16w_fw.game_txt.INamed;
+
+import eu.pedu.adv16w_fw.test_util.default_game.game.State;
+import eu.pedu.adv16w_fw.test_util.default_game.game.Texts;
 
 import java.util.Optional;
 
@@ -87,6 +91,9 @@ class tsPICK_UP extends STEM11AAction
         }
         STEM11Item item = oItem.get();
         STEM11Bag bag = STEM11Bag.getInstance();
+        if (item.getWeight() >= bag.getCapacity()) {
+            return STEM11Texts.mHEAVY_ITEM + itemName;
+        }
         boolean added = bag.tryAddItem(item);
         if (added) {
             currentRoom.removeItem(item);

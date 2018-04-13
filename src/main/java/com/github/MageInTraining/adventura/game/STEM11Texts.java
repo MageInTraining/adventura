@@ -42,15 +42,15 @@ static final String AUTHOR_ID = "STEM11";
 
 /** Names of used items - without prefix. */
 static final String
-        PENIZE                      = "Peníze",
-        OBJEDNAVKA_DO_KNIHKUPECTVI  = "Objednávka_do_knihkupectví",
-        TROUBA                      = "Trouba",
-        BANKOMAT                    = "Bankomat",
-        PRODAVACKA                  = "Prodavačka",
-        KUCHARKA                    = "Kuchařka",
-        UREDNIK                     = "Úředník",
-        KURE                        = "Kuře",
-        CIBULE_A_BRAMBORY           = "Cibule_a_brambory";
+        penize                      = "penize",
+        objednavka_do_knihkupectvi  = "objednavka_do_knihkupectvi",
+        trouba                      = "trouba",
+        bankomat                    = "bankomat",
+        prodavacka                  = "prodavacka",
+        kucharka                    = "kucharka",
+        urednik                     = "urednik",
+        kure                        = "kure",
+        cibule_a_brambory           = "cibule_a_brambory";
 
 
 /** Names of used actions - prefix {@code 'a'}. */
@@ -97,7 +97,7 @@ static final String
         
         mTAKEN          = "Vzal jsi předmět: ",
         mNO_TAKE_ITEM   = mANCO + "Nezadal jsi co má být sebráno",
-        mHEAVY_ITEM     = mANCO + "Zadaný předmět nemůže být sebrán: ",
+        mHEAVY_ITEM     = mANCO + "Zadaný předmět nemůže být sebrán, je moc těžký: ",
         mNOT_HERE       = mANCO + "Zadanáý předmět není v této oblasti: ",
         mBAG_FULL       = mANCO + "Nemůžeš sebrat zadaný předmět, " 
                             + "tvoje taška je plná.",
@@ -117,7 +117,7 @@ static final String
         mNOTHING_TO_USE ="Nezadal jsi, co chceš použít",
         
         mNOT_TALK       = "Nezadal jsi, s kým chceš mluvit",
-        mGIMMME_MONEY   = "Dej úředníkovi platbu za elektřinu",
+        mGIMMME_MONEY   = "Dej urednikovi platbu za elektřinu",
         mPAID           = "Zaplatil jsi elektřinu",
         
         mBOUGHT         = "Koupil jsi: ",

@@ -38,8 +38,7 @@ class STEM11Item extends STEM11KureGame implements IItemG
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
 
 	private String name;    
-	private boolean pickable;
-	public int weight;
+	private int weight;
 
 //##############################################################################
 //== VARIABLE INSTANCE FIELDS ==================================================
@@ -54,57 +53,41 @@ class STEM11Item extends STEM11KureGame implements IItemG
      *
      * @param name The name of the created item
      */
-    STEM11Item(String name){
+    STEM11Item(String name)
+    {
         super(name);
-        switch (name){
+                  switch (name){
             case "penize":
-            	this.name = name;    
-            	this.pickable =true;
-            	this.weight = 1;
+            this.weight =1;
             break;
             
             case "objednavka_do_knihkupectvi":
-            	this.name = name;    
-                this.pickable =true;
-                this.weight = 1;
+            this.weight =1;
             break;
             
             case "trouba":
-            	this.name = name;    
-                this.pickable =false;
-                this.weight = 10;
+            this.weight =10;
             break;
-            
             case "bankomat":
-            	this.name = name;    
-                this.pickable =false;
+            this.weight =10;
             break;
-            
             case "prodavacka":
-            	this.name = name;    
-                this.pickable =false;
+            this.weight =10;
             break;
-            
             case "kucharka":
-            	this.name = name;    
-                this.pickable =true;
+            this.weight =1;
             break;
-            
             case "urednik":
-            	this.name = name;    
-                this.pickable =false;
+            this.weight =10;
             break;
-            
             case "kure":
-            	this.name = name;    
-                this.pickable =true;
+            this.weight =1;
             break;
-            
             case "cibule_a_brambory":
-            	this.name = name;    
-                this.pickable =true;
+            this.weight =1;
             break;
-            
+            default:
+            this.weight= 10;
             }
     }
 
@@ -114,28 +97,18 @@ class STEM11Item extends STEM11KureGame implements IItemG
 //== INSTANCE GETTERS AND SETTERS ==============================================
 
     /***************************************************************************
-     * Vrátí váhu předmětu, resp. charakteristiku jí odpovídající.
-     * Objekty, které není možno zvednout,
-     * mají váhu větší, než je kapacita batohu.
+     * Returns the item weight, and/or the corresponding characteristics.
+     * The items that cannot be raised
+     * have higher weight than the bag capacity is.
      *
-     * @return Váha objektu
+     * @return Weight of the item
      */
     @Override
     public int getWeight()
     {
-     if (pickable) {
-        return 1;
-    }
-     return 10;   
+        return weight;
     }
     
-/*    public int getWeight()
-    {
-        return weight;
-    }*/
-
-
-
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
 

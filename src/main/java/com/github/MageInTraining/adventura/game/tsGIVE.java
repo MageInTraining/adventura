@@ -91,27 +91,27 @@ class tsGIVE extends STEM11AAction
         if (! oItem.isPresent()) {
             return "Nelze dat vec " + itemReciver;    
     }
-        if ( STEM11Texts.OBJEDNAVKA_DO_KNIHKUPECTVI.equalsIgnoreCase(itemCommodity)
+        if ( STEM11Texts.objednavka_do_knihkupectvi.equalsIgnoreCase(itemCommodity)
                 && 
-                STEM11Texts.PRODAVACKA.equalsIgnoreCase(itemReciver)){
+                STEM11Texts.prodavacka.equalsIgnoreCase(itemReciver)){
                 
-                    STEM11Item kniha = new STEM11Item(STEM11Texts.KUCHARKA);
+                    STEM11Item kniha = new STEM11Item(STEM11Texts.kucharka);
                     boolean added = bag.tryAddItem(kniha);
                     if (added) {
                         STEM11Item objednavka = oItem.get();
                         bag.removeItem(objednavka);
-                        return STEM11Texts.mGIVE + STEM11Texts.PRODAVACKA
-                                + " " + STEM11Texts.OBJEDNAVKA_DO_KNIHKUPECTVI
-                                + STEM11Texts.mRECIVED + STEM11Texts.KUCHARKA;
+                        return STEM11Texts.mGIVE + STEM11Texts.prodavacka
+                                + " " + STEM11Texts.objednavka_do_knihkupectvi
+                                + STEM11Texts.mRECIVED + STEM11Texts.kucharka;
                     }
                     else {
                         return STEM11Texts.mBAG_FULL;
                     }
             }
 
-            if ( STEM11Texts.PENIZE.equalsIgnoreCase(itemCommodity)
+            if ( STEM11Texts.penize.equalsIgnoreCase(itemCommodity)
                 && 
-                STEM11Texts.UREDNIK.equalsIgnoreCase(itemReciver)){
+                STEM11Texts.urednik.equalsIgnoreCase(itemReciver)){
                 
                 STEM11State.setElectricityPaid(true);
                 STEM11Item penize = oItem.get();

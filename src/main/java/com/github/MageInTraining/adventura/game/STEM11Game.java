@@ -101,7 +101,7 @@ public class STEM11Game extends ANamed implements IGameG, ISTEM11Prototype
      */
     private STEM11Game()
     {
-        super("Epický quest přípravy pečeného kuřete");
+        super("Epický quest přípravy pečeného kurete");
     }
 
 
