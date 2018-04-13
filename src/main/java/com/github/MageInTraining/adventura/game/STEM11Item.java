@@ -39,6 +39,7 @@ class STEM11Item extends STEM11KureGame implements IItemG
 
 	private String name;    
 	private boolean pickable;
+	public int weight;
 
 //##############################################################################
 //== VARIABLE INSTANCE FIELDS ==================================================
@@ -59,16 +60,19 @@ class STEM11Item extends STEM11KureGame implements IItemG
             case "penize":
             	this.name = name;    
             	this.pickable =true;
+            	this.weight = 1;
             break;
             
             case "objednavka_do_knihkupectvi":
             	this.name = name;    
                 this.pickable =true;
+                this.weight = 1;
             break;
             
             case "trouba":
             	this.name = name;    
                 this.pickable =false;
+                this.weight = 10;
             break;
             
             case "bankomat":
@@ -124,6 +128,11 @@ class STEM11Item extends STEM11KureGame implements IItemG
     }
      return 10;   
     }
+    
+/*    public int getWeight()
+    {
+        return weight;
+    }*/
 
 
 
