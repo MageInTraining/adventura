@@ -43,14 +43,14 @@ static final String AUTHOR_ID = "STEM11";
 /** Names of used items - without prefix. */
 static final String
         penize                      = "penize",
-        objednavka_do_knihkupectvi  = "objednavka_do_knihkupectvi",
+        objednavka  = "objednavka",
         trouba                      = "trouba",
         bankomat                    = "bankomat",
         prodavacka                  = "prodavacka",
         kucharka                    = "kucharka",
         urednik                     = "urednik",
         kure                        = "kure",
-        cibule_a_brambory           = "cibule_a_brambory";
+        brambory           = "brambory";
 
 
 /** Names of used actions - prefix {@code 'a'}. */

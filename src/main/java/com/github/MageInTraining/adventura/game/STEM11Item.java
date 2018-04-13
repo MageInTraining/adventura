@@ -61,7 +61,7 @@ class STEM11Item extends STEM11KureGame implements IItemG
             this.weight =1;
             break;
             
-            case "objednavka_do_knihkupectvi":
+            case "objednavka":
             this.weight =1;
             break;
             
@@ -83,7 +83,7 @@ class STEM11Item extends STEM11KureGame implements IItemG
             case "kure":
             this.weight =1;
             break;
-            case "cibule_a_brambory":
+            case "brambory":
             this.weight =1;
             break;
             default:

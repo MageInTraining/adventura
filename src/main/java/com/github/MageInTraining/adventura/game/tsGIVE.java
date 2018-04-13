@@ -91,7 +91,7 @@ class tsGIVE extends STEM11AAction
         if (! oItem.isPresent()) {
             return "Nelze dat vec " + itemReciver;    
     }
-        if ( STEM11Texts.objednavka_do_knihkupectvi.equalsIgnoreCase(itemCommodity)
+        if ( STEM11Texts.objednavka.equalsIgnoreCase(itemCommodity)
                 && 
                 STEM11Texts.prodavacka.equalsIgnoreCase(itemReciver)){
                 
@@ -101,7 +101,7 @@ class tsGIVE extends STEM11AAction
                         STEM11Item objednavka = oItem.get();
                         bag.removeItem(objednavka);
                         return STEM11Texts.mGIVE + STEM11Texts.prodavacka
-                                + " " + STEM11Texts.objednavka_do_knihkupectvi
+                                + " " + STEM11Texts.objednavka
                                 + STEM11Texts.mRECIVED + STEM11Texts.kucharka;
                     }
                     else {

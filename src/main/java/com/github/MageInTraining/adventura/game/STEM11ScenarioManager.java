@@ -91,7 +91,7 @@ String[]   bag;        //Current bag content
             ,
             "Byt",
             new String[] { "Sídliště" },
-            new String[] { "penize", "objednavka_do_knihkupectvi", "trouba" },
+            new String[] { "penize", "objednavka", "trouba" },
             new String[] {}
         );
 
@@ -110,23 +110,23 @@ String[]   bag;        //Current bag content
     {
         START_STEP,
 
-        new ScenarioStep(1, tsTAKE, "tsTAKE penize",
+        /*new ScenarioStep(1, tsTAKE, "tsTAKE penize",
             "Vzal jsi předmět: penize"
             ,
             "Byt",
             new String[] { "Sídliště" },
-            new String[] { "objednavka_do_knihkupectvi", "trouba" },
+            new String[] { "objednavka", "trouba" },
             new String[] { "penize" }
         )
         ,
 
-        new ScenarioStep(2, tsTAKE, "tsTAKE objednavka_do_knihkupectvi",
-            "Vzal jsi předmět: objednavka_do_knihkupectvi"
+        new ScenarioStep(2, tsTAKE, "tsTAKE objednavka",
+            "Vzal jsi předmět: objednavka"
             ,
             "Byt",
             new String[] { "Sídliště" },
             new String[] { "trouba" },
-            new String[] { "penize", "objednavka_do_knihkupectvi" }
+            new String[] { "penize", "objednavka" }
         )
         ,
 
@@ -136,7 +136,7 @@ String[]   bag;        //Current bag content
             "Sídliště",
             new String[] { "Centrum", "Obchoďák", "Byt" },
             new String[] {  },
-            new String[] { "penize", "objednavka_do_knihkupectvi" }
+            new String[] { "penize", "objednavka" }
         )
         ,
 
@@ -147,7 +147,7 @@ String[]   bag;        //Current bag content
             new String[] { "Sídliště", "Obchoďák", "Energetická_společnost",
             "Knihkupectví"},
             new String[] { "bankomat" },
-            new String[] { "penize", "objednavka_do_knihkupectvi" }
+            new String[] { "penize", "objednavka" }
         )
         ,
         new ScenarioStep(5, tsMOVE, "tsMOVE Knihkupectví",
@@ -156,13 +156,13 @@ String[]   bag;        //Current bag content
             "Knihkupectví",
             new String[] { "Centrum"},
             new String[] { "prodavacka" },
-            new String[] { "penize", "objednavka_do_knihkupectvi" }
+            new String[] { "penize", "objednavka" }
         )
         ,
 
         new ScenarioStep(6, tsNON_STANDARD2, "tsGIVE  Objednávka_do_"
                         + "knihkupectví prodavacka",
-            "Dal jsi prodavacka objednavka_do_knihkupectvi a "
+            "Dal jsi prodavacka objednavka a "
                     + "obdržel jsi kucharka"
             ,
             "Knihkupectví",
@@ -338,18 +338,18 @@ String[]   bag;        //Current bag content
             ,
             "Ovoce_a_zelenina",
             new String[] { "Obchoďák"},
-            new String[] { "cibule_a_brambory" },
+            new String[] { "brambory" },
             new String[] { "kure", "penize" }
         )
         ,
 
-        new ScenarioStep(24, tsNON_STANDARD2, "tsBUY cibule_a_brambory penize",
-            "Koupil jsi: cibule_a_brambory"
+        new ScenarioStep(24, tsNON_STANDARD2, "tsBUY brambory penize",
+            "Koupil jsi: brambory"
             ,
             "Ovoce_a_zelenina",
             new String[] { "Obchoďák"},
-            new String[] { "cibule_a_brambory" },
-            new String[] { "kure", "cibule_a_brambory" }
+            new String[] { "brambory" },
+            new String[] { "kure", "brambory" }
         )
         ,
                 new ScenarioStep(25, tsMOVE, "tsMOVE Obchoďák",
@@ -358,7 +358,7 @@ String[]   bag;        //Current bag content
             "Obchoďák",
             new String[] { "Centrum", "Sídliště", "Masna", "Ovoce_a_zelenina"},
             new String[] { "bankomat" },
-            new String[] { "kure", "cibule_a_brambory" }
+            new String[] { "kure", "brambory" }
         )
         ,
                 new ScenarioStep(26, tsMOVE, "tsMOVE  Sídliště",
@@ -367,7 +367,7 @@ String[]   bag;        //Current bag content
             "Sídliště",
             new String[] { "Centrum", "Obchoďák", "Byt"},
             new String[] {  },
-            new String[] { "kure", "cibule_a_brambory" }
+            new String[] { "kure", "brambory" }
         )
         ,
 
@@ -377,7 +377,7 @@ String[]   bag;        //Current bag content
             "Byt",
             new String[] { "Sídliště"},
             new String[] { "trouba", "kucharka" },
-            new String[] { "kure", "cibule_a_brambory" }
+            new String[] { "kure", "brambory" }
         )
         ,
 
@@ -387,38 +387,38 @@ String[]   bag;        //Current bag content
 //            "Byt",
 //            new String[] { "Sídliště"},
 //            new String[] { "trouba", "kucharka" },
-//            new String[] { "cibule_a_brambory" }
+//            new String[] { "brambory" }
 //        )
 //        ,
 //
-//        new ScenarioStep(29, tsNON_STANDARD2, "tsGIVE  cibule_a_brambory "
+//        new ScenarioStep(29, tsNON_STANDARD2, "tsGIVE  brambory "
 //                        + "trouba",
-//            "Strčil jsi omyté a nakrájené cibule_a_brambory do trouby"
+//            "Strčil jsi omyté a nakrájené brambory do trouby"
 //            ,
 //            "Byt",
 //            new String[] { "Sídliště"},
 //            new String[] { "trouba", "kucharka" },
 //            new String[] {  }
 //        )
-//        ,
-                new ScenarioStep(28, tsNON_STANDARD1, "tsUSE  trouba",
+//        ,*/
+         new ScenarioStep(28, tsNON_STANDARD1, "tsUSE  trouba",
             "Úspěšně jsi použil předmět"
             ,
             "Byt",
             new String[] { "Sídliště"},
             new String[] { "trouba", "kucharka" },
-            new String[] { "kure", "cibule_a_brambory" }
+            new String[] { "kure", "brambory" }
         )
         ,
         
-                   new ScenarioStep(29, tsEND, "end",
+        new ScenarioStep(29, tsEND, "end",
             "Konec hry.\n" +
             "Díky za pozornost."
             ,
             "Byt",
             new String[] { "Sídliště" },
             new String[] { "trouba", "kucharka" },
-            new String[] { "kure", "cibule_a_brambory" }
+            new String[] { "kure", "brambory" }
         )
 
     };
@@ -458,7 +458,7 @@ String[]   bag;        //Current bag content
             ,
             "Byt",
             new String[] { "Sídliště" },
-            new String[] { "penize", "objednavka_do_knihkupectvi", "trouba" },
+            new String[] { "penize", "objednavka", "trouba" },
             new String[] {  }
         )
         ,
@@ -470,7 +470,7 @@ String[]   bag;        //Current bag content
             ,
             "Byt",
             new String[] { "Sídliště" },
-            new String[] {  "penize", "objednavka_do_knihkupectvi", "trouba"  },
+            new String[] {  "penize", "objednavka", "trouba"  },
             new String[] {  }
         ),        
 
@@ -480,7 +480,7 @@ String[]   bag;        //Current bag content
             ,
             "Byt",
             new String[] { "Sídliště" },
-            new String[] {  "penize", "objednavka_do_knihkupectvi", "trouba" },
+            new String[] {  "penize", "objednavka", "trouba" },
             new String[] {  }
         ),               
 
@@ -490,7 +490,7 @@ String[]   bag;        //Current bag content
             ,
             "Byt",
             new String[] { "Sídliště" },
-            new String[] {  "penize", "objednavka_do_knihkupectvi", "trouba" },
+            new String[] {  "penize", "objednavka", "trouba" },
             new String[] {  }
         ),           
 
@@ -499,7 +499,7 @@ String[]   bag;        //Current bag content
             ,
             "Byt",
             new String[] { "Sídliště" },
-            new String[] {  "penize", "objednavka_do_knihkupectvi", "trouba" },
+            new String[] {  "penize", "objednavka", "trouba" },
             new String[] {  }
         ), 
 
@@ -509,7 +509,7 @@ String[]   bag;        //Current bag content
             ,
             "Byt",
             new String[] { "Sídliště" },
-            new String[] {  "penize", "objednavka_do_knihkupectvi", "trouba" },
+            new String[] {  "penize", "objednavka", "trouba" },
             new String[] {  }
         ),  
 
@@ -519,7 +519,7 @@ String[]   bag;        //Current bag content
             ,
             "Byt",
             new String[] { "Sídliště"  },
-            new String[] {  "penize", "objednavka_do_knihkupectvi", "trouba" },
+            new String[] {  "penize", "objednavka", "trouba" },
             new String[] {  }
         ),        
         
@@ -530,7 +530,7 @@ String[]   bag;        //Current bag content
             ,
             "Byt",
             new String[] { "Sídliště" },
-            new String[] {  "penize", "objednavka_do_knihkupectvi", "trouba" },
+            new String[] {  "penize", "objednavka", "trouba" },
             new String[] {  }
         ),    
         
@@ -540,17 +540,17 @@ String[]   bag;        //Current bag content
             ,
             "Byt",
             new String[] { "Sídliště" },
-            new String[] {  "objednavka_do_knihkupectvi", "trouba" },
+            new String[] {  "objednavka", "trouba" },
             new String[] { "penize" }
         ),
 
-   new ScenarioStep(10, tsTAKE , "tsTAKE objednavka_do_knihkupectvi",
-            "Vzal jsi předmět: objednavka_do_knihkupectvi"
+   new ScenarioStep(10, tsTAKE , "tsTAKE objednavka",
+            "Vzal jsi předmět: objednavka"
             ,
             "Byt",
             new String[] { "Sídliště" },
             new String[] { "trouba" },
-            new String[] { "penize", "objednavka_do_knihkupectvi" }
+            new String[] { "penize", "objednavka" }
         ),
 
     new ScenarioStep(11, tsMOVE, "tsMOVE  Sídliště",
@@ -559,7 +559,7 @@ String[]   bag;        //Current bag content
             "Sídliště",
             new String[] { "Centrum", "Obchoďák", "Byt"},
             new String[] {  },
-            new String[] { "penize", "objednavka_do_knihkupectvi"  }
+            new String[] { "penize", "objednavka"  }
         )
         ,
 
@@ -569,7 +569,7 @@ String[]   bag;        //Current bag content
             "Obchoďák",
             new String[] { "Centrum", "Sídliště", "Masna", "Ovoce_a_zelenina"},
             new String[] { "bankomat" },
-            new String[] { "penize", "objednavka_do_knihkupectvi"  }
+            new String[] { "penize", "objednavka"  }
         )
         ,
 
@@ -579,7 +579,7 @@ String[]   bag;        //Current bag content
             "Masna",
             new String[] { "Obchoďák"},
             new String[] { "kure" },
-            new String[] { "penize", "objednavka_do_knihkupectvi"  }
+            new String[] { "penize", "objednavka"  }
         )
         ,
 
@@ -589,7 +589,7 @@ String[]   bag;        //Current bag content
             "Masna",
             new String[] { "Obchoďák"},
             new String[] { "kure" },
-            new String[] { "kure", "objednavka_do_knihkupectvi"  }
+            new String[] { "kure", "objednavka"  }
         )
         ,
 
@@ -599,7 +599,7 @@ String[]   bag;        //Current bag content
             "Obchoďák",
             new String[] { "Centrum", "Sídliště", "Masna", "Ovoce_a_zelenina"},
             new String[] { "bankomat" },
-            new String[] { "kure", "objednavka_do_knihkupectvi" }
+            new String[] { "kure", "objednavka" }
         )
         ,
 
@@ -609,7 +609,7 @@ String[]   bag;        //Current bag content
             "Obchoďák",
             new String[] { "Centrum", "Sídliště", "Masna", "Ovoce_a_zelenina"},
             new String[] { "bankomat" },
-            new String[] { "kure", "penize", "objednavka_do_knihkupectvi" }
+            new String[] { "kure", "penize", "objednavka" }
         )
         ,
 
@@ -618,19 +618,19 @@ String[]   bag;        //Current bag content
             ,
             "Ovoce_a_zelenina",
             new String[] { "Obchoďák"},
-            new String[] { "cibule_a_brambory" },
-            new String[] { "kure", "penize", "objednavka_do_knihkupectvi" }
+            new String[] { "brambory" },
+            new String[] { "kure", "penize", "objednavka" }
         )
         ,
 
-                new ScenarioStep(18, tsBAG_FULL, "tsTAKE cibule_a_brambory",
+                new ScenarioStep(18, tsBAG_FULL, "tsTAKE brambory",
             "Zadaná akce nebyla provedena.\n" +
             "Nemůžeš sebrat zadaný předmět, tvoje taška je plná."
             ,
             "Ovoce_a_zelenina",
             new String[] { "Obchoďák"},
-            new String[] { "cibule_a_brambory" },
-            new String[] { "kure","penize", "objednavka_do_knihkupectvi" }
+            new String[] { "brambory" },
+            new String[] { "kure","penize", "objednavka" }
         )
         ,
 
@@ -641,8 +641,8 @@ String[]   bag;        //Current bag content
             ,
             "Ovoce_a_zelenina",
             new String[] { "Obchoďák" },
-            new String[] { "cibule_a_brambory" },
-            new String[] { "kure","penize", "objednavka_do_knihkupectvi" }
+            new String[] { "brambory" },
+            new String[] { "kure","penize", "objednavka" }
             )
             , 
 
@@ -652,8 +652,8 @@ String[]   bag;        //Current bag content
             ,
             "Ovoce_a_zelenina",
             new String[] { "Obchoďák"  },
-            new String[] {  "cibule_a_brambory" },
-            new String[] { "kure","penize", "objednavka_do_knihkupectvi" }
+            new String[] {  "brambory" },
+            new String[] { "kure","penize", "objednavka" }
         )
         ,
 
@@ -663,8 +663,8 @@ String[]   bag;        //Current bag content
             ,
             "Ovoce_a_zelenina",
             new String[] { "Obchoďák" },
-            new String[] { "cibule_a_brambory" },
-            new String[] { "kure","penize", "objednavka_do_knihkupectvi" }
+            new String[] { "brambory" },
+            new String[] { "kure","penize", "objednavka" }
         )
     };
 
@@ -684,7 +684,7 @@ String[]   bag;        //Current bag content
             ,
             "Byt",
             new String[] { "Sídliště" },
-            new String[] {  "penize", "objednavka_do_knihkupectvi", "trouba" },
+            new String[] {  "penize", "objednavka", "trouba" },
             new String[] {  }
         )
         ,
@@ -693,7 +693,7 @@ String[]   bag;        //Current bag content
             ,
             "Byt",
             new String[] { "Sídliště" },
-            new String[] { "objednavka_do_knihkupectvi", "trouba" },
+            new String[] { "objednavka", "trouba" },
             new String[] { "penize" }
         )
         ,
@@ -702,7 +702,7 @@ String[]   bag;        //Current bag content
             ,
             "Byt",
             new String[] { "Sídliště"},
-            new String[] { "penize", "objednavka_do_knihkupectvi", "trouba" },
+            new String[] { "penize", "objednavka", "trouba" },
             new String[] {  }
         )
         ,

@@ -75,7 +75,7 @@ class STEM11World implements IWorldG
         exportedAreas = Collections.unmodifiableCollection(Areas);
         startingArea = new Area("BYT",
                            new String[] {"SIDLISTE"},
-                           new String[] {"penize", "objednavka_do_knihkupectvi", "trouba"},
+                           new String[] {"penize", "objednavka", "trouba"},
                            new Point (330 ,210 ));
         Areas.add(startingArea);
         Areas.add(new Area("SIDLISTE",
@@ -105,7 +105,7 @@ class STEM11World implements IWorldG
                             new Point (560 ,70 )));
         Areas.add(new Area("OVOCE_A_ZELENINA",
                             new String[] {"OBCHODAK"},
-                            new String[] {"cibule_a_brambory" },
+                            new String[] {"brambory" },
                             new Point (560 , 370)));
     }
 

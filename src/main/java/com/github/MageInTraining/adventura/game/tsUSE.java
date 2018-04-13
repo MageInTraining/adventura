@@ -114,7 +114,7 @@ class tsUSE extends STEM11AAction
             if (! oItem3.isPresent()) {
             	maKure= true;
             }
-            Optional<STEM11Item> oItem4 = INamed.getO(STEM11Texts.cibule_a_brambory, bag.getItems());
+            Optional<STEM11Item> oItem4 = INamed.getO(STEM11Texts.brambory, bag.getItems());
             if (! oItem4.isPresent()) {
             	maCibuliABrambory= true;
             }
