@@ -60,11 +60,9 @@ abstract class STEM11AAction extends ANamed implements IAction
         new tsHELP();
         new tsPUT_DOWN();
         new tsEND();
-       // new tsUSE();
-        //new tsREPAIR();
+        new tsUSE();
         new tsGIVE();
        // new tsTALK();
-        //new tsOPEN();
             }
 
 

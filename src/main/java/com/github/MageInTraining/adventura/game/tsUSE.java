@@ -7,6 +7,8 @@ import eu.pedu.adv16w_fw.game_txt.INamed;
 
 import java.util.Optional;
 
+import com.github.MageInTraining.adventura.game.STEM11Texts;
+
 /*******************************************************************************
  * Instance třídy {@code EmptyAction} zpracovávají příkazy, které
  * ???.
@@ -25,8 +27,6 @@ class tsUSE extends STEM11AAction
 //== CONSTANT CLASS ATTRIBUTES =================================================
 //== VARIABLE CLASS ATTRIBUTES =================================================
 
-    private static final tsUSE SINGLETON = new tsUSE();
-
 //##############################################################################
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
 
@@ -38,16 +38,6 @@ class tsUSE extends STEM11AAction
 
 //##############################################################################
 //== CONSTANT INSTANCE ATTRIBUTES ==============================================
-    /***************************************************************************
-     * Tovární metoda vracející odkaz na jedninou existující instanci dané hry.
-     *
-     * @return Instance dané hry
-     */
-    static tsUSE getInstance()
-    {
-        return SINGLETON;
-    }
-
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 
 
@@ -60,7 +50,7 @@ class tsUSE extends STEM11AAction
      */
     tsUSE()
     {
-        super ("tsUSE",
+        super (STEM11Texts.aUSE,
                "Pouzijes vec");     
     }
 
@@ -113,21 +103,29 @@ class tsUSE extends STEM11AAction
             return STEM11Texts.mUSED;
         }
 
-/*        if (STEM11Texts.trouba.equalsIgnoreCase(itemName) &&
+        if (STEM11Texts.trouba.equalsIgnoreCase(itemName) &&
             STEM11State.isElectricityPaid() == true &&
             STEM11State.knowRecipe() == true){
+        	boolean maKure= true;
+        	boolean maCibuliABrambory= true;
             
             STEM11Bag            bag = STEM11Bag.getInstance();
-            Optional<STEM11Item> oItem3 = bag.tryAddItem(item);
-            Optional<STEM11Item> oItem4 = bag.tryAddItem
-                                                (STEM11Texts.cibule_a_brambory);
-            if ( oItem3.isPresent() && oItem4.isPresent() ) {
+            Optional<STEM11Item> oItem3 = INamed.getO(STEM11Texts.kure, bag.getItems());
+            if (! oItem3.isPresent()) {
+            	maKure= true;
+            }
+            Optional<STEM11Item> oItem4 = INamed.getO(STEM11Texts.cibule_a_brambory, bag.getItems());
+            if (! oItem4.isPresent()) {
+            	maCibuliABrambory= true;
+            }
+            
+            if ( maKure && maCibuliABrambory ) {
                 return STEM11Texts.mUSED;
             }
             else{
                 return STEM11Texts.mNOT_HAVE;
             }
-        }*/
+        }
 
         return STEM11Texts.mUNUSABLE;
     }
