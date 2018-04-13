@@ -120,6 +120,7 @@ class tsUSE extends STEM11AAction
             }
             
             if ( maKure && maCibuliABrambory ) {
+            	STEM11State.setChickenCooked(true);
                 return STEM11Texts.mUSED;
             }
             else{

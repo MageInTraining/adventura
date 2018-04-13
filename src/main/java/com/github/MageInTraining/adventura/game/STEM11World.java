@@ -76,37 +76,37 @@ class STEM11World implements IWorldG
         startingArea = new Area("BYT",
                            new String[] {"SIDLISTE"},
                            new String[] {"penize", "objednavka", "trouba"},
-                           new Point (330 ,210 ));
+                           new Point (431 ,30 ));
         Areas.add(startingArea);
         Areas.add(new Area("SIDLISTE",
                            new String[] {"BYT", "CENTRUM", "OBCHODAK"},
                            new String[] {},
-                           new Point (280 ,70 )));
+                           new Point (421 ,245 )));
         Areas.add(new Area("CENTRUM",
                             new String[] {"SIDLISTE", "OBCHODAK", "KNIHKUPECTVI", "ENERGETICKA_SPOLECNOST"},
                             new String[] {"bankomat"},
-                            new Point (90 ,120 )));
+                            new Point (600 ,445 )));
         Areas.add(new Area("KNIHKUPECTVI",
                             new String[] {"CENTRUM"},
                             new String[] {"prodavacka"},
-                            new Point (110 ,260 )));
+                            new Point (706 ,202 )));
         Areas.add(new Area("ENERGETICKA_SPOLECNOST",
                             new String[] {"CENTRUM"},
                             new String[] {"urednik" },
-                           new Point (280 ,370 )));
+                           new Point (801 ,534 )));
         Areas.add(new Area("OBCHODAK",
                             new String[] {"SIDLISTE", "CENTRUM", "MASNA", "OVOCE_A_ZELENINA"},
                             new String[] {"Rozbyta_hracka", 
                                           "Dvere_do_garaze"},
-                            new Point (560 ,230 )));
+                            new Point (298 ,439 )));
         Areas.add(new Area("MASNA",
                             new String[] {"OBCHODAK"},
                             new String[] {"kure"},
-                            new Point (560 ,70 )));
+                            new Point (140 ,245 )));
         Areas.add(new Area("OVOCE_A_ZELENINA",
                             new String[] {"OBCHODAK"},
                             new String[] {"brambory" },
-                            new Point (560 , 370)));
+                            new Point (77 , 503)));
     }
 
 //== ABSTRACT METHODS ==========================================================

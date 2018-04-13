@@ -33,6 +33,9 @@ public class STEM11State
 
     /** Flag of knowing the recipe. */
     private static boolean knowRecipe;
+    
+    /** Flag of cooking the chicken. */
+    private static boolean cookedChicken;
 
 
 
@@ -128,6 +131,27 @@ public class STEM11State
     {
         STEM11State.knowRecipe = knowRecipe;
     }
+    
+    /***************************************************************************
+     * Returns information if the player has money.
+     *
+     * @return {@code true} if he has money, otherwise {@code false}
+     */
+    static boolean isChickenCooked()
+    {
+        return cookedChicken;
+    }
+
+
+    /***************************************************************************
+     * Sets the flag indicating if the player has money.
+     *
+     * @param haveMoney The set value
+     */
+    static void setChickenCooked(boolean cookedChicken)
+    {
+        STEM11State.cookedChicken = cookedChicken;
+    }
 
 
 
@@ -143,6 +167,7 @@ public class STEM11State
         haveMoney = false;
         haveBookstoreOrder= false;
         knowRecipe = false;
+        cookedChicken = false;
     }
 
 

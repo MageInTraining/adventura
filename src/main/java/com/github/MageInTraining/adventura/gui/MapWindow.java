@@ -61,7 +61,7 @@ public class MapWindow extends Stage implements IInitializable
         Double offsetY = 5d;
         Stage primaryStage = GUI.getPrimaryStage();
         
-        this.setTitle("Mapa Hotelu");
+        this.setTitle("Mapa Města");
         this.setX(primaryStage.getX() + offsetX);
         this.setY(primaryStage.getY() + offsetY);
         
@@ -86,9 +86,9 @@ public class MapWindow extends Stage implements IInitializable
         Scene mapScene = new Scene(mapGroup);
 
         this.setScene(mapScene);
-        this.setResizable(false);
-        this.setWidth(640);
-        this.setHeight(480+29);
+        this.setResizable(true);
+        this.setWidth(720);
+        this.setHeight(720);
         
    
     }   

@@ -179,7 +179,7 @@ public class GUI extends Application implements IUIG /*, IAuthorMe*/
     
    private void drawMainWindow(Stage primaryStage)
     {
-        primaryStage.setTitle("Hotel na útesu");
+        primaryStage.setTitle("Epický quest přípravy pečeného kuřete");
         primaryStage.setX(0);
         primaryStage.setY(0);
     

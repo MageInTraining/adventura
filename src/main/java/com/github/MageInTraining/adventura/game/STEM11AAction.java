@@ -111,6 +111,10 @@ abstract class STEM11AAction extends ANamed implements IAction
         command = command.trim();
         String answer;
         if (isAlive) {
+        	if (STEM11State.isChickenCooked()==true) {
+        		stopGame();
+        		return "Vítězství";
+        	}
             answer = executeCommonComand(command);
         }
         else {
