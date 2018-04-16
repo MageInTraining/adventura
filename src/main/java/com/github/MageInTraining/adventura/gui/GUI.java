@@ -64,6 +64,7 @@ public class GUI extends Application implements IUIG /*, IAuthorMe*/
     private final BagItemBox bagItemBox;   
     private final ItemBox ItemBox;    
     private final NeighborougsBox neighborougsBox;
+    //private final ActionBox ActionBox;
     
     private IGameG currentGame;
     private Stage primaryStage;   
@@ -81,6 +82,7 @@ public class GUI extends Application implements IUIG /*, IAuthorMe*/
         bagItemBox = new BagItemBox (this);
         ItemBox = new ItemBox (this);
         neighborougsBox = new NeighborougsBox (this);
+        //ActionBox = new ActionBox (this);
     }
  
   
@@ -137,6 +139,11 @@ public class GUI extends Application implements IUIG /*, IAuthorMe*/
         return ItemBox; 
     }
     
+    /*public ActionBox getActionBox()
+    {
+        return ActionBox; 
+    }*/
+    
     @Override
     public void executeCommand(String command) {
         currentGame.executeCommand(command);
@@ -167,6 +174,7 @@ public class GUI extends Application implements IUIG /*, IAuthorMe*/
             bagItemBox.initializeFor(currentGame);
             ItemBox.initializeFor(currentGame);
             neighborougsBox.initializeFor(currentGame);
+            //ActionBox.initializeFor(currentGame);
                         
             commandPane.initializeFor(currentGame);
             
@@ -197,6 +205,10 @@ public class GUI extends Application implements IUIG /*, IAuthorMe*/
         BottomBox.setAlignment(Pos.CENTER);
         HBox.setHgrow(commandPane, Priority.ALWAYS);
     ////////////    
+    
+      ///Horní část
+        //Pomocný kontenjer pro pravou část  
+        VBox topBox = new VBox(menuPane/*, ActionBox*/);
         
     ///PRAVÁ ČÁST
         //Pomocný kontenjer pro pravou část
@@ -214,7 +226,7 @@ public class GUI extends Application implements IUIG /*, IAuthorMe*/
     ///////////   
        
         //nasázení prvků do hlavního kontejneru scény
-        borderPane.setTop(menuPane);
+        borderPane.setTop(topBox);
         borderPane.setLeft(ScrollLeft);
         borderPane.setCenter(outputPane);
         borderPane.setRight(ScrollRight);

@@ -32,7 +32,7 @@ import static com.github.MageInTraining.adventura.game.STEM11Texts.*;
  * @author  Milan STEHLÍK
  * @version 2016-Summer
  */
-abstract class STEM11AAction extends ANamed implements IAction
+abstract class STEM11AAction extends ANamed implements IAction, ISTEM11Action
 {
 //== CONSTANT CLASS FIELDS =====================================================
 

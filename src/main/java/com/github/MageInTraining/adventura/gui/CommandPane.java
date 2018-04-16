@@ -93,6 +93,7 @@ public class CommandPane extends TextField implements IInitializable {
         gui.getBagItemBox().refresh();
         gui.getNeighborougsBox().refresh();
         gui.getItemBox().refresh();
+//        gui.getActionBox().refresh();
         
         gui.getLogWindow().addToLog("\n\n" + command +
                              decorateAnswerLite(answer));
